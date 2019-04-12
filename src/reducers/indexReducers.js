@@ -11,16 +11,17 @@ const tasksReduser = ( state=[], action ) => {
 
         switch(action.type) {
             case 'ADD_TODO':
+                if ( !action.payload ) return state;
                 return state = state.concat(action.payload)
 
             case 'DELETE_TODO':
-                return state.filter((task) => task.payload !== action.payload);
+                console.log(action.payload);
+                return state.filter( (item, id) => id !== action.payload)
 
             default: return state;
         }
 
 }
-
 
 // Обновим точку входа для редьюсеров:
 const reducers = combineReducers({

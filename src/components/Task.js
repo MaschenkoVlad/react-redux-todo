@@ -7,14 +7,14 @@ import {deleteTask} from '../actions/action'
 class Task extends Component {
     render() {
       return (
-          <li>
-            <div>
+          <li style={liStyle}>
+            <div style={divStyle}>
                 {this.props.task}
             </div>
             <div>
-                <button onClick={()=>{this.props.deleteTask(this.props.id)}}>Delete</button>
+                <button onClick={()=>{this.props.deleteTask(this.props.index) }}>Delete</button>
             </div>
-          </li>    
+          </li>
       )
     }
   }
@@ -23,5 +23,12 @@ function mapDispatchToProps(dispatch){
     return bindActionCreators({deleteTask}, dispatch)
 }
 
+const liStyle = {
+    display: 'flex'
+}
+const divStyle = {
+    marginRight: '25px',
+    marginBottom: '15px',
+}
 
-export default connect(  mapDispatchToProps )(Task);
+export default connect( null, mapDispatchToProps )(Task);

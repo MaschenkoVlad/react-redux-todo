@@ -9,7 +9,10 @@ class Taskbar extends Component {
       return (
           <div>
               <input type="text" ref="task" placeholder="Add task" />
-              <button type="submit" onClick={()=>{this.props.addTask(this.refs.task.value)} }>Add</button>
+              <button type="submit"
+                onClick={ ()=>{ this.props.addTask(this.refs.task.value); 
+                this.refs.task.value='';
+                }}>Add</button>
           </div>    
       )
     }
@@ -26,7 +29,7 @@ function mapDispatchToProps(dispatch){
 
 // dispatch() отправляет в Redux объект, action.
 
-export default connect(  mapDispatchToProps )(Taskbar);
+export default connect( null, mapDispatchToProps )(Taskbar);
 
 // connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options]);
 // connect ает возможность получить текущее состояние,

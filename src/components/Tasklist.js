@@ -4,22 +4,30 @@ import Task from './Task'
 
 
 class Tasklist extends Component {
+
     render() {
-    const array = [1,2,3,4,5,6];
-    const list = array.map((task, index)=>( <Task key={index} task={task} /> ))
       return (
-          <ul>
-            {list}
+          <ul style={ulStyle}>
+            {this.props.tasks.map((task, index)=>( 
+                <Task key={index} task={task} index={index}/> 
+                )
+            )}
           </ul>    
       )
     }
   }
 
-//   {this.props.map((task,index)=>( <Task key={index} task={task} /> ) )}
-
 function mapStateToProps(state){
     return { tasks: state.tasks }
 }
+
+// tasks -> tasksReduser -> array
+
+var ulStyle = { 
+    
+    listStyle: 'none',
+
+};
 
 export default connect( mapStateToProps)( Tasklist );
 
